@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Пост</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>Форум</h2>
+            <p></p><p></p>
+            <h4 th:text="${post.name}">Нашелся трактор</h4><br>
+
+            <div class="in_div">
+                <!--<form>-->
+                    <div class="form-group">
+                        <textarea id="desc" class="form-control" disabled th:text="${post.description}">Вчера в нашем селе был обнаружен в яме трактор, который пропал в пятницу 13-го...</textarea>
+                    </div>
+                    <div class="form-group">
+                        <img src="1.png" width="300" height="200">
+                    </div><br>
+
+                    <input type="button" class="btn btn-outline-primary" value="Назад" style="float: left"
+                           th:onclick="'window.location.href = \'' + @{/main} + '\''">
+                    <input type="button" class="btn btn-outline-primary" value="Выйти" style="float: right"
+                           th:onclick="'window.location.href = \'' + @{/logout} + '\''">
+                <!--</form>-->
+            </div>
+        </div>
+    </body>
+</html>
