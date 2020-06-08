@@ -17,10 +17,16 @@
         <div class="container">
             <h2>Форум</h2>
             <p></p><p></p>
+            <label>Текущий пользователь - admin</label><p></p>
             <table class="table table-bordered form-group" id="tab">
                 <thead>
                     <tr>
                         <th colspan="3">Флудилка</th>
+                    </tr>
+                    <tr>
+                        <th class="th_low">Тема</th>
+                        <th class="th_low">Логин</th>
+                        <th class="th_low">Дата создания</th>
                     </tr>
                 </thead>
                 <tbody th:each = "post : ${posts}">
@@ -38,8 +44,8 @@
                 </tbody>
             </table>
 
-            <input type="button" class="btn btn-outline-success" value="Новый пост" style="float: left"
-                   th:onclick="'window.location.href = \'' + @{/edit} + '\''"><br><br>
+            <input type="button" class="btn btn-outline-success" value="Новая тема" style="float: left"
+                   th:onclick="'window.location.href = \'' + @{/create} + '\''"><br><br>
             <input type="button" class="btn btn-outline-primary" value="Новый пользователь" style="float: left">
             <input type="button" class="btn btn-outline-primary" value="Выйти" style="float: right"
                    th:onclick="'window.location.href = \'' + @{/logout} + '\''">
