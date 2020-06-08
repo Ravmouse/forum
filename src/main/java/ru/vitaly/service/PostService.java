@@ -1,8 +1,10 @@
 package ru.vitaly.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vitaly.entity.Post;
-import java.util.Arrays;
+import ru.vitaly.repository.PostRepository;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,12 +14,24 @@ import java.util.List;
 @Service
 public class PostService {
 
-    private final List<Post> posts = Arrays.asList(
-            new Post("Урожай на моем участке", "В прошлом году мне удалось вырастить 100 кг картофеля"),
-            new Post("Баня", "Эту баню я построил своими руками")
-    );
+    private PostRepository posts;
+
+    @Autowired
+    public PostService(PostRepository posts) {
+        this.posts = posts;
+    }
 
     public List<Post> getAll() {
-        return posts;
+        final List<Post> list = new ArrayList<>();
+        posts.findAll().forEach(list::add);
+        return list;
+    }
+
+    public Post getPostById(int id) {
+        return posts.findById(id).get();
+    }
+
+    public void addPost(Post post) {
+        posts.save(post);
     }
 }

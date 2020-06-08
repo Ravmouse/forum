@@ -1,3 +1,12 @@
 server:
   servlet:
     context-path: /forum
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/forum
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
