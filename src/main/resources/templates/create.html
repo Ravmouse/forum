@@ -20,27 +20,37 @@
             <h4>Создание новой темы</h4><br>
 
             <div class="in_div">
-                <form th:action="@{/edit}" method="post" id="frm" modelattribute="post">
+
+                <form method="post" th:action="@{/create/savepost}" id="upload_Form" modelattribute="the_Post">
                     <div class="form-group">
                         <label for="name">Название</label><br>
-                        <input id="name" placeholder="Введите название" class="form-control">
+                        <input id="name" placeholder="Введите название" class="form-control" name="name" autocomplete="off">
                     </div>
 
                     <div class="form-group">
-                        <label for="desc">Описание</label><br>
-                        <textarea id="desc" class="form-control"></textarea>
+                        <label for="description">Описание</label><br>
+                        <textarea id="description" class="form-control" name="description" autocomplete="off"></textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label>Постер</label>
-                        <input type="file" name="inputFile">
-                    </div><br>
-
-                    <input type="button" class="btn btn-outline-success" value="Создать" style="float: left" id="btn_addpost"
-                           th:onclick="'window.location.href = \'' + @{/main} + '\''">
-                    <input type="button" class="btn btn-outline-primary" value="Выйти" style="float: right"
-                           th:onclick="'window.location.href = \'' + @{/logout} + '\''">
+                    <input type="hidden" id="hid" name="image_name">
                 </form>
+
+                <div class="form-group">
+                    <label>Постер</label>
+
+                    <form method="post" enctype="multipart/form-data" id="upload_File">
+                        <input type="file" name="file" autocomplete="off" accept="image/jpeg,image/png,image/gif" /><br><br>
+                    </form>
+
+                    <input type="button" class="btn btn-outline-success" value="Загрузить" id="btn_Upload"/><br><br>
+
+                    <div class="in_div left"></div>
+                </div><br>
+
+                <input type="button" class="btn btn-outline-success" value="Создать тему" style="float: left" id="btn_Add"/>
+
+                <input type="button" class="btn btn-outline-primary" value="Выйти" style="float: right"
+                        th:onclick="'window.location.href = \'' + @{/logout} + '\''"/>
             </div>
         </div>
     </body>

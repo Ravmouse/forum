@@ -1,5 +1,6 @@
 package ru.vitaly.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,17 +25,13 @@ public class Post {
     private String description;
     private final LocalDate created = LocalDate.now();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public Post() { }
+    private String image_name;
 
-    public Post(String name, String description, User user) {
-        this.name = name;
-        this.description = description;
-        this.user = user;
-    }
+    public Post() { }
 
     public int getId() {
         return id;
@@ -72,6 +69,14 @@ public class Post {
         this.user = user;
     }
 
+    public String getImage_name() {
+        return image_name;
+    }
+
+    public void setImage_name(String image_name) {
+        this.image_name = image_name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this) {
@@ -87,5 +92,10 @@ public class Post {
     @Override
     public int hashCode() {
         return 31;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("id=%d, name=%s, description=%s, created=%s, image_name=%s", id, name, description, created, image_name);
     }
 }

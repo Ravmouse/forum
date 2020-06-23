@@ -19,6 +19,12 @@ th {
     background-color: #dee3e7;
 }
 
+.th_low {
+    background-color: cornsilk;
+    font-size: small;
+    font-weight: 200;
+}
+
 img {
     width: 250px;
     height: 200px;

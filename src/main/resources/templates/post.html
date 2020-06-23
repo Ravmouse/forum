@@ -17,22 +17,20 @@
         <div class="container">
             <h2>Форум</h2>
             <p></p><p></p>
-            <h4 th:text="${post.name}">Нашелся трактор</h4><br>
+            <h4 th:text="${post.name}"></h4><br>
 
             <div class="in_div">
-                <!--<form>-->
-                    <div class="form-group">
-                        <textarea id="desc" class="form-control" disabled th:text="${post.description}">Вчера в нашем селе был обнаружен в яме трактор, который пропал в пятницу 13-го...</textarea>
-                    </div>
-                    <div class="form-group">
-                        <img src="1.png" width="300" height="200">
-                    </div><br>
+                <div class="form-group">
+                    <textarea id="desc" class="form-control" disabled th:text="${post.description}"></textarea>
+                </div>
+                <div class="form-group">
+                    <img th:src="@{/images/{img_name}(img_name=${post.image_name})}" style="height: 100%; object-fit: contain"/>
+                </div><br>
 
-                    <input type="button" class="btn btn-outline-primary" value="Назад" style="float: left"
-                           th:onclick="'window.location.href = \'' + @{/main} + '\''">
-                    <input type="button" class="btn btn-outline-primary" value="Выйти" style="float: right"
-                           th:onclick="'window.location.href = \'' + @{/logout} + '\''">
-                <!--</form>-->
+                <input type="button" class="btn btn-outline-primary" value="Назад" style="float: left"
+                       th:onclick="'window.location.href = \'' + @{/main} + '\''">
+                <input type="button" class="btn btn-outline-primary" value="Выйти" style="float: right"
+                       th:onclick="'window.location.href = \'' + @{/logout} + '\''">
             </div>
         </div>
     </body>
