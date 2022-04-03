@@ -10,8 +10,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
- * @author Vitaly Vasilyev, date: 22.06.2020, e-mail: rav.energ@rambler.ru
- * @version 1.0
+ * @author Vitaly Vasilyev, e-mail: rav.energ@rambler.ru
  */
 @Configuration
 @EnableWebSecurity
@@ -31,6 +30,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/").authenticated()
                 .antMatchers("/main").authenticated()
                 .antMatchers("/post/{id}/details").authenticated()
                 .antMatchers(HttpMethod.GET, "/create").hasRole("ADMIN")
